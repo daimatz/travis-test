@@ -1,12 +1,18 @@
 language: ruby
-ruby:
-  - 2.0
 before_install:
-  - curl -s https://get.docker.io/ubuntu/ | sudo sh
+  - echo "#!/bin/sh\nexit 101\n" | sudo tee /usr/sbin/policy-rc.d
+  - sudo chmod 755 /usr/sbin/policy-rc.d
+  - sudo apt-get update
+  - sudo apt-get install -y apache2 ffmpeg
+  - sudo apt-get install -qq lxc
+  - sudo apt-get install -y python-software-properties
+  - sudo add-apt-repository -y ppa:dotcloud/lxc-docker
+  - sudo apt-get update
+  - sudo apt-get install -y lxc-docker
   - sudo docker build -t sshd .
   - container=`sudo docker run -d sshd`
   - ip=`sudo docker inspect $container | grep IPAddress | cut -d '"' -f 4`
-  - sudo apt-get install python
+  - sudo apt-get install -y python-setuptools
   - sudo easy_install fabric
   - fabric -H $ip -u test -p pass provision
 script:
