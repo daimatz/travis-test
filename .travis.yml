@@ -1,0 +1,10 @@
+language: ruby
+ruby:
+  - 2.0
+before_install:
+  - curl -s https://get.docker.io/ubuntu/ | sudo sh
+  - sudo docker build -t sshd .
+  - container=`sudo docker run -d sshd`
+  - ip=`sudo docker inspect $container | grep IPAddress | cut -d '"' -f 4`
+script:
+  - echo OK
