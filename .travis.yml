@@ -5,7 +5,7 @@ install:
   - sudo apt-get update
   - echo exit 101 | sudo tee /usr/sbin/policy-rc.d
   - sudo chmod +x /usr/sbin/policy-rc.d
-  - sudo apt-get install -qy slirp lxc lxc-docker
+  - sudo apt-get install -y slirp lxc lxc-docker
   - git clone git://github.com/jpetazzo/sekexe
   - sekexe/run `pwd`/uml.sh
   - sudo apt-get install -y python-setuptools
