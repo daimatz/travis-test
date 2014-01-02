@@ -11,7 +11,7 @@ install:
   - sudo apt-get install -y python-setuptools
   - sudo easy_install fabric
 before_script:
-  - sudo sekexe/run "docker build -t sshd ."
+  - sudo sekexe/run "docker build -t sshd `pwd`"
   - container=`sudo sekexe/run "docker run -d sshd"`
   - ip=`sudo sekexe/run "docker inspect $container" | grep IPAddress | cut -d '"' -f 4`
   - fabric -H $ip -u test -p pass provision
