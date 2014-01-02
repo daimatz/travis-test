@@ -3,7 +3,8 @@ before_install:
   - sudo apt-get update
   # lxc installation by
   # https://github.com/zpatten/lxc/blob/master/spec/support/install-lxc.sh
-  - echo "#!/bin/sh\nexit 101" | sudo tee /usr/sbin/policy-rc.d
+  - echo '#!/bin/sh' | sudo tee /usr/sbin/policy-rc.d
+  - echo 'exit 101' | sudo tee -a /usr/sbin/policy-rc.d
   - sudo chmod 755 /usr/sbin/policy-rc.d
   - sudo apt-get install -qq lxc
   - sudo apt-get install -y python-software-properties
