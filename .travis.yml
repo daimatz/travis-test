@@ -2,6 +2,8 @@ language: ruby
 install:
   - sudo apt-get update
   - sudo apt-get install -y apt-transport-https
+  - sudo apt-get install -y linux-image-generic-lts-raring linux-headers-generic-lts-raring
+  - sudo reboot
   # lxc installation by
   # https://github.com/zpatten/lxc/blob/master/spec/support/install-lxc.sh
   - echo '#!/bin/sh' | sudo tee /usr/sbin/policy-rc.d
