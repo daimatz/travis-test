@@ -1,6 +1,7 @@
 language: ruby
 install:
   - sudo apt-get update
+  - sudo apt-get install -y apt-transport-https
   # lxc installation by
   # https://github.com/zpatten/lxc/blob/master/spec/support/install-lxc.sh
   - echo '#!/bin/sh' | sudo tee /usr/sbin/policy-rc.d
