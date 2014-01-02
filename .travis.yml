@@ -3,9 +3,9 @@ before_install:
   - sudo apt-get update
   # lxc installation by
   # https://github.com/zpatten/lxc/blob/master/spec/support/install-lxc.sh
-  - cat <<EOF | sudo tee /usr/sbin/policy-rc.d
-#!/bin/sh
-exit 101
+  - cat <<EOF | sudo tee /usr/sbin/policy-rc.d \
+#!/bin/sh \
+exit 101 \
 EOF
   - sudo chmod 755 /usr/sbin/policy-rc.d
   - sudo apt-get install -y lxc
